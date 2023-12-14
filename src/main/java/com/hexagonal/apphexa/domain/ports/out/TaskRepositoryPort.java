@@ -12,7 +12,7 @@ public interface TaskRepositoryPort {
 
     List<Task> findAll();
 
-    Optional<Task> update(Task task);
+    Optional<Task> update(Long id, Task task);
 
     boolean deleteById(Long id);
 }
