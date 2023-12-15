@@ -15,13 +15,13 @@ public class ExternalServiceAdapter implements ExternalServicePort {
 
     @Override
     public AdditionalTaskInfo getAdditionalTaskInfo(Long taskId) {
-        String apiUrl = " https://jsonplaceholder.typicode.com/todos" + taskId;
+        String apiUrl = "https://jsonplaceholder.typicode.com/todos/" + taskId;
         ResponseEntity<JsonPlaceHolderTodo> responseEntity = restTemplate.getForEntity(apiUrl, JsonPlaceHolderTodo.class);
         JsonPlaceHolderTodo todo = responseEntity.getBody();
         if (todo == null) {
             return null;
         }
-        apiUrl = "https://jsonplaceholder.typicode.com/users" + todo.getUserId();
+        apiUrl = "https://jsonplaceholder.typicode.com/users/" + todo.getUserId();
 
         ResponseEntity<JsonPlaceHolderUser> userResponseEntity = restTemplate.getForEntity(apiUrl, JsonPlaceHolderUser.class);
         JsonPlaceHolderUser user = userResponseEntity.getBody();
